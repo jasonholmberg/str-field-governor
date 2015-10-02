@@ -13,6 +13,8 @@ import str.govern.governors.Governors;
 import str.govern.governors.NullMaskingGovernor;
 
 /**
+ * The Governed annotation for marking a getter method with some governing meta-data.
+ * 
  * @author Jason Holmberg
  *
  */

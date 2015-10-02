@@ -15,6 +15,8 @@ import str.govern.governors.Governor;
 import str.govern.governors.NullMaskingGovernor;
 
 /**
+ * An interface marking a class as "govern-able". This interface contains some default implementations.
+ * 
  * @author Jason Holmberg
  *
  */
@@ -23,6 +25,17 @@ public interface Governable {
   static final Logger log = LoggerFactory.getLogger(Governable.class);
   
   List<String> governed = new ArrayList<>();
+  
+  
+  /**
+   * Returns a list of the "governed" methods in the class. 
+   * <p>
+   * I originally thought I would use this to determine which classes were "governed", but turns 
+   * out I don't need it to do that.  But I decided to keep it around because this stuff is still 
+   * half-baked. 
+   * 
+   * @return a list of governed methods
+   */
   default List<String> getGovernedMethods() {
     if (governed.isEmpty()) {
     System.out.println(this.getClass().getName());
@@ -36,6 +49,16 @@ public interface Governable {
     return governed;
   }
   
+  
+  /**
+   * Attempts to applied the specified or default {@link Governor} to the incoming object. The return 
+   * type of the {@link Governor} should be the same as the {@code type} parameter or at least be cast-able 
+   * to that type.
+   * 
+   * @param o - this incoming value to govern
+   * @param type - the type to which the return value is cast
+   * @return
+   */
   default <T extends Object> T govern(Object o, Class<T> type) {
     String currentMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
       Method m = null;

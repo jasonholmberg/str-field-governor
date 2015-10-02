@@ -8,9 +8,11 @@ package str.govern.governors;
  *
  */
 public enum Governors {
-  dephault(new NullMaskingGovernor()),
+  dephault(new NullMaskingGovernor()), 
   mask(new StringMaskingGovernor());
+  
   public Governor strategy;
+
   Governors(Governor strategy) {
     this.strategy = strategy;
   }
