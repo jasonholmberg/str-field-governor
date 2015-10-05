@@ -1,0 +1,6 @@
+
+dependencies {
+	runtime 'str:str-govern:1.0'
+	compile 'org.apache.shiro:shiro-core:1.2.4'
+	compile rootProject
+}
